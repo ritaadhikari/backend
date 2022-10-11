@@ -68,7 +68,7 @@ router.put("/:id", auth, async (req, res) => {
     if (!contact) return res.status(404).json({ msg: "Contact not found." });
 
     // Verifies that logged in user is the owner of contact.
-    if (contact.user.toString() !== req.user.id) {
+    if (contact.user?.toString() !== req.user.id) {
       return res.status(401).json({ msg: "User is not authorized." });
     }
 
@@ -93,7 +93,7 @@ router.delete("/:id", auth, async (req, res) => {
     if (!contact) return res.status(404).json({ msg: "Contact not found." });
 
     // Verifies that logged in user is the owner of contact.
-    if (contact.user.toString() !== req.user.id) {
+    if (contact.user?.toString() !== req.user.id) {
       return res.status(401).json({ msg: "User is not authorized." });
     }
 
